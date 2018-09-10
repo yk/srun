@@ -1,0 +1,6 @@
+#!/usr/bin/env python3
+
+from srun import srun
+
+if __name__ == '__main__':
+    srun.main()

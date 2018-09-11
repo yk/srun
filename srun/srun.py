@@ -27,7 +27,7 @@ def main():
     fabric.Connection(addr, inline_ssh_env=True).run(cmd, env=env)
     exit(1)
 
-    sh.rsync('-a', '-v', '-z', '{}:{}/'.format(addr, path), os.getcwd())
+    sh.rsync('-a', '-v', '-z', '{}:{}/logs/'.format(addr, path), os.getcwd() + '/logs')
 
 
 if __name__ == '__main__':

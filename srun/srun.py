@@ -24,10 +24,11 @@ def main():
 
     cmd = 'cd {} && {}'.format(path, ' '.join(sys.argv[1:]))
 
-    fabric.Connection(addr, inline_ssh_env=True).run(cmd, env=env)
-    exit(1)
+    connection = fabric.Connection(addr, inline_ssh_env=True)
+    connection.client.load_system_host_keys()
+    connection.run(cmd, env=env)
 
-    sh.rsync('-a', '-v', '-z', '{}:{}/logs/'.format(addr, path), os.getcwd() + '/logs')
+    print(sh.rsync('-a', '-v', '-z', '{}:{}/logs/'.format(addr, path), os.getcwd() + '/logs'))
 
 
 if __name__ == '__main__':

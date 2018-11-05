@@ -20,7 +20,7 @@ def main():
         del sys.argv[1]
     env = dict(env)
 
-    print(sh.rsync('-a', '-v', '-z', '{}/'.format(os.getcwd()), '{}:{}'.format(addr, path)))
+    print(sh.rsync('-a', '-v', '-z', '--exclude', '__pycache__', '--exclude', '*.swp', '{}/'.format(os.getcwd()), '{}:{}'.format(addr, path)))
 
     cmd = 'cd {} && {}'.format(path, ' '.join(sys.argv[1:]))
 
